@@ -6,27 +6,27 @@ class CaeserCipher
     @shift = shift
   end
   
-  def encrypt(string)
-    encrypted_string = ""
+  def shift(b, shift_direction)
+    value = b + ((@shift % 26) * shift_direction)
+    value -= 26 if value > ASCII_Z
+    value += 26 if value < ASCII_A
+    return value.chr
+  end
+  
+  def shift_string(string, shift_direction)
+    shifted_string = ""
     string.each_byte do |b|
-      if b + @shift > ASCII_Z
-        b -= 26
-      end
-      encrypted_string << (b + @shift).chr
+      shifted_string << shift(b, shift_direction)
     end
     
-    return encrypted_string
+    return shifted_string
+  end
+  
+  def encrypt(string)
+    shift_string(string, 1)
   end
 
   def decrypt(string)
-    decrypted_string = ""
-    string.each_byte do |b| 
-      if b - @shift < ASCII_A
-        b += 26
-      end
-      decrypted_string << (b - @shift).chr
-    end
-    
-    return decrypted_string
+    shift_string(string, -1)
   end
 end
