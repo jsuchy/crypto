@@ -9,13 +9,6 @@ module Crypto
       @shift = shift + A_VALUE
     end
 
-    def self.encrypt(key, plaintext)
-      offset = key.downcase.unpack('c').first
-      cipher = Caesar.new(offset - A_VALUE)
-
-      cipher.encrypt(plaintext)
-    end
-
     def encrypt(plaintext)
       plaintext.downcase.each_char.collect do |plainletter|
         encrypt_plaintext(plainletter)
