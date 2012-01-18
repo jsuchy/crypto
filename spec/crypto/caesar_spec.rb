@@ -30,4 +30,9 @@ describe Crypto::Caesar do
     cipher = Crypto::Caesar.new(2)
     cipher.transformation.should == "abcdefghijklmnopqrstuvwxyz\nCDEFGHIJKLMNOPQRSTUVWXYZAB"
   end
+
+  it "strips out spaces" do
+    cipher = Crypto::Caesar.new(0)
+    cipher.encrypt("a b c d e ").should == "ABCDE"
+  end
 end
