@@ -6,31 +6,29 @@ module Crypto
     attr_accessor :shift
 
     def initialize(shift=3)
-      @shift = shift + A_VALUE
+      @shift = shift
     end
 
     def encrypt(plaintext)
       plaintext.downcase.each_char.collect do |plainletter|
-        encrypt_plaintext(plainletter)
+        _encrypt(plainletter)
       end.join
-    end
-
-    def encrypt_plaintext(letter)
-      cipherval = letter.unpack('c').first + @shift - A_VALUE
-      if cipherval > Z_VALUE
-        cipherval -= (Z_VALUE - A_VALUE) + 1
-      end
-
-      cipherval.chr.upcase
     end
 
     def transformation
       letters = ("a".."z").to_a
       letters << "\n"
       ("a".."z").to_a.each do |letter|
-        letters << encrypt_plaintext(letter)
+        letters << _encrypt(letter)
       end
       letters.join
+    end
+
+    def _encrypt(letter)
+      plain_letter_index = letter.unpack('c').first - A_VALUE
+      shifted_encoding = (plain_letter_index + @shift) % 26
+      cipherval = shifted_encoding + A_VALUE
+      cipherval.chr.upcase
     end
   end
 end
