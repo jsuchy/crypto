@@ -30,4 +30,8 @@ describe Crypto::Caesar do
     cipher = Crypto::Caesar.new(2)
     cipher.transformation.should == "abcdefghijklmnopqrstuvwxyz\nCDEFGHIJKLMNOPQRSTUVWXYZAB"
   end
+
+  # it "create a random substitution cipher" do
+  #   puts ("A".."Z").to_a.shuffle.join(" ")
+  # end
 end
