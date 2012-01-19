@@ -31,10 +31,6 @@ describe Crypto::Caesar do
     cipher.transformation.should == "abcdefghijklmnopqrstuvwxyz\nCDEFGHIJKLMNOPQRSTUVWXYZAB"
   end
 
-  # it "create a random substitution cipher" do
-  #   puts ("A".."Z").to_a.shuffle.join(" ")
-  # end
-
   it "strips out spaces" do
     cipher = Crypto::Caesar.new(0)
     cipher.encrypt("a b c d e ").should == "ABCDE"
