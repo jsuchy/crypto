@@ -19,4 +19,15 @@ describe Crypto::Vigenere do
     cipher = Crypto::Vigenere.new("WHITE")
     cipher.encrypt("diverttroops").should == "ZPDXVPAZHSLZ"
   end
+
+  it "encrypts a Babbage quote with his last name" do
+    cipher = Crypto::Vigenere.new("CHARLES")
+    cipher.encrypt("decipheringisinmyopiniononeofthemostfascinatingofarts").should == "FLCZALWTPNXTWAPTYFAMFKVNFYIGHAHVXSKVMAJNMFCAIERSXCYTJ"
+  end
+
+  it "sandbox" do
+    pending
+    cipher = Crypto::Vigenere.new("KING")
+    puts cipher.encrypt("thesunandthemaninthemoon")
+  end
 end
