@@ -35,4 +35,9 @@ describe Crypto::Caesar do
     cipher = Crypto::Caesar.new(0)
     cipher.encrypt("a b c d e ").should == "ABCDE"
   end
+
+  it "strips out non-alpha characters" do
+    cipher = Crypto::Caesar.new(0)
+    cipher.encrypt("ab1234c^%$de").should == "ABCDE"
+  end
 end

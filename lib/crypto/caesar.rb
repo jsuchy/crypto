@@ -10,7 +10,7 @@ module Crypto
     end
 
     def encrypt(plaintext)
-      plaintext = plaintext.gsub(/\s/,'')
+      plaintext = plaintext.gsub(/\W+|\d+/,'')
       plaintext.downcase.each_char.collect do |plainletter|
         _encrypt(plainletter)
       end.join

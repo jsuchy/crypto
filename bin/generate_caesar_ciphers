@@ -1,0 +1,11 @@
+#! /usr/bin/env ruby
+$: << File.dirname(__FILE__) + "/../lib"
+require 'crypto/caesar'
+
+def usage
+  puts "usage: bin/generate_caesar_ciphers <shift>"
+  exit
+end
+
+usage unless ARGV[0]
+puts Crypto::Caesar.new(ARGV[0].to_i).cipher_key
