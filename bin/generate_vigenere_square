@@ -1,0 +1,7 @@
+#! /usr/bin/env ruby
+$: << File.dirname(__FILE__) + "/../lib"
+require 'crypto/vigenere'
+
+Crypto::Vigenere.generate_square.each do |row|
+  puts row
+end

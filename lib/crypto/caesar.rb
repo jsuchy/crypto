@@ -16,12 +16,16 @@ module Crypto
       end.join
     end
 
-    def transformation
+    def cipher_alphabet
+      ("a".."z").to_a.collect do |letter|
+        _encrypt(letter)
+      end
+    end
+
+    def cipher_key
       letters = ("a".."z").to_a
       letters << "\n"
-      ("a".."z").to_a.each do |letter|
-        letters << _encrypt(letter)
-      end
+      letters << cipher_alphabet
       letters.join
     end
 

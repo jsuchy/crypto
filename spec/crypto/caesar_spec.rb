@@ -23,12 +23,12 @@ describe Crypto::Caesar do
     cipher.encrypt("XaVT").should == "WZUS"
   end
 
-  it "displays the plaintext to ciphertext transformation" do
+  it "displays the plaintext to ciphertext cipher_key" do
     cipher = Crypto::Caesar.new(0)
-    cipher.transformation.should == "abcdefghijklmnopqrstuvwxyz\nABCDEFGHIJKLMNOPQRSTUVWXYZ"
+    cipher.cipher_key.should == "abcdefghijklmnopqrstuvwxyz\nABCDEFGHIJKLMNOPQRSTUVWXYZ"
 
     cipher = Crypto::Caesar.new(2)
-    cipher.transformation.should == "abcdefghijklmnopqrstuvwxyz\nCDEFGHIJKLMNOPQRSTUVWXYZAB"
+    cipher.cipher_key.should == "abcdefghijklmnopqrstuvwxyz\nCDEFGHIJKLMNOPQRSTUVWXYZAB"
   end
 
   it "strips out spaces" do

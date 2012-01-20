@@ -6,6 +6,19 @@ module Crypto
       @keyword = keyword.downcase
     end
 
+    def self.generate_square
+      letters = ("A".."Z").to_a
+
+      square = ["  | #{('a'..'z').to_a.join(' | ')}"]
+
+      letters.each_with_index do |letter, index|
+        cipher = Crypto::Caesar.new(index)
+        cipher_alphabet = cipher.cipher_alphabet.join(" | ")
+        square << "#{letter} | #{cipher_alphabet}"
+      end
+      square
+    end
+
     def encrypt(plaintext)
       index = 0
       plaintext.each_char.collect do |letter|

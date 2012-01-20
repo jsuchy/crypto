@@ -24,10 +24,4 @@ describe Crypto::Vigenere do
     cipher = Crypto::Vigenere.new("CHARLES")
     cipher.encrypt("decipheringisinmyopiniononeofthemostfascinatingofarts").should == "FLCZALWTPNXTWAPTYFAMFKVNFYIGHAHVXSKVMAJNMFCAIERSXCYTJ"
   end
-
-  it "sandbox" do
-    pending
-    cipher = Crypto::Vigenere.new("KING")
-    puts cipher.encrypt("thesunandthemaninthemoon")
-  end
 end
