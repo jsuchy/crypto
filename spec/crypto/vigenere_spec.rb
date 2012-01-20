@@ -18,6 +18,7 @@ describe Crypto::Vigenere do
   it "encrypts with a keyword of WHITE" do
     cipher = Crypto::Vigenere.new("WHITE")
     cipher.encrypt("diverttroops").should == "ZPDXVPAZHSLZ"
+    cipher.encrypt("divert,t3434roops").should == "ZPDXVPAZHSLZ"
   end
 
   it "encrypts a Babbage quote with his last name" do

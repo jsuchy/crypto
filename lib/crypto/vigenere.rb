@@ -6,6 +6,15 @@ module Crypto
       @keyword = keyword.downcase
     end
 
+    def encrypt(plaintext)
+      index = 0
+      plaintext.gsub(/\W+|\d+/, '').each_char.collect do |letter|
+        shift_char = index % @keyword.size
+        index += 1
+        Crypto::Caesar.new(_shift(shift_char)).encrypt(letter)
+      end.join
+    end
+
     def self.generate_square
       letters = ("A".."Z").to_a
 
@@ -19,16 +28,8 @@ module Crypto
       square
     end
 
-    def encrypt(plaintext)
-      index = 0
-      plaintext.each_char.collect do |letter|
-        shift_char = index % @keyword.size
-        shift = @keyword[shift_char].unpack('c').first - Crypto::Caesar::A_VALUE
-        cipher = Crypto::Caesar.new(shift)
-        crypted_letter = cipher.encrypt(letter)
-        index += 1
-        crypted_letter
-      end.join
+    def _shift(char)
+      @keyword[char].unpack('c').first - Crypto::Caesar::A_VALUE
     end
   end
 end
